@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "particleid-ai"
+version = "0.1.0"
+description = "Reproducible educational particle identification and original-model diagnostics"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "matplotlib>=3.8,<4", "scikit-learn>=1.4,<2"]
+
+[project.optional-dependencies]
+original = ["optuna>=3.6,<6", "pymoo>=0.6,<0.7"]
+dev = ["pytest>=8,<10"]
+ui = ["streamlit>=1.32,<2"]
+
+[project.scripts]
+particleid = "particleid.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
